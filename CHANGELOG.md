@@ -9,6 +9,21 @@
 > - :house: [Internal]
 > - :nail_care: [Polish]
 
+## 4.15.3
+
+#### :boom: Breaking Change
+
+- **Package renamed to `@vollack/jodit`**: this fork now publishes under the scoped name `@vollack/jodit` instead of `jodit`, so it never collides with the upstream `jodit` package on npm. Update `npm install`/`yarn add` and any `import ... from 'jodit'` to `@vollack/jodit`.
+
+#### :memo: Documentation
+
+- **CDN**: `docs/_includes/cdn.md`, `docs/getting-started.md` and `README.md` now reference `@vollack/jodit` on jsdelivr/unpkg (both mirror npm automatically). Dropped the cdnjs examples: cdnjs only mirrors the upstream `jodit` package and requires a manual submission per package, so it can't serve this fork's builds.
+
+#### :house: Internal
+
+- Added `publish-package-to-npm.yml`: builds and publishes `@vollack/jodit` to the public npm registry (`access: public`) when a GitHub Release is published, using an `NPM_TOKEN` secret — mirrors the working setup in `vollack/editor.js`. Requires that secret to be added to this repo before the first release.
+- `tools/utils/prepare-publish.ts` no longer injects a `jodit: ^4.0.1` runtime dependency into the published `build/package.json`. That was meant for downstream wrapper packages (e.g. `jodit-pro`) that depend on the base `jodit` package; it triggered incorrectly once this package's own name stopped being the literal string `jodit`.
+
 ## 4.15.2
 
 #### :memo: Documentation
