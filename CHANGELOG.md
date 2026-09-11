@@ -18,6 +18,7 @@
 #### :house: Internal
 
 - Removed the npm-publish release workflow (`release.yml`) and the Docker-based tooling: the contributor `docker/` environment and the Playwright screenshot-testing container (`test/screenshots/Dockerfile`, `playwright.yml`, and the related `make screenshots-*` targets). This fork no longer publishes to npm or runs screenshot tests through Docker.
+- `new-version.yml`: dropped the "Trigger release action" step, which curled a `release` dispatch at the upstream `xdan/jodit` repo (not this fork) to kick off the npm-publish workflow removed above.
 
 ## 4.15.1
 
