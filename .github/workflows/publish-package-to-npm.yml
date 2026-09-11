@@ -1,0 +1,29 @@
+name: Publish package to NPM
+
+on:
+    release:
+        types: [published]
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+            - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v6
+              with:
+                  node-version-file: '.nvmrc'
+                  cache: 'npm'
+                  registry-url: https://registry.npmjs.org/
+
+            - name: Install dependencies
+              run: npm ci --legacy-peer-deps
+
+            - name: Build
+              run: make build-all
+
+            - name: Publish
+              run: npm publish ./build
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

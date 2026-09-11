@@ -7,27 +7,32 @@
 - npm
 
   ```shell
-  npm install jodit
+  npm install @vollack/jodit
   ```
 
 - yarn
 
   ```shell
-  yarn add jodit
+  yarn add @vollack/jodit
   ```
 
 {% endlist %}
 
 ## CDN
 
+This fork publishes to npm as `@vollack/jodit` (not the upstream `jodit` package), so jsdelivr and
+unpkg — both of which mirror npm automatically — serve it under that scoped name. cdnjs is a
+separate, manually curated mirror of the upstream `jodit` package only, so it can't serve this
+fork's builds.
+
 ### jsdelivr
 
 ```html
 <link
 	rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/jodit@latest/es2021/jodit.fat.min.css"
+	href="https://cdn.jsdelivr.net/npm/@vollack/jodit@latest/es2021/jodit.fat.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/jodit@latest/es2021/jodit.fat.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vollack/jodit@latest/es2021/jodit.fat.min.js"></script>
 ```
 
 `@latest` always serves the newest release, which can change under you without warning. Pin to a
@@ -36,9 +41,9 @@ version tag instead for a stable build:
 ```html
 <link
 	rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/jodit@4.15.1/es2021/jodit.fat.min.css"
+	href="https://cdn.jsdelivr.net/npm/@vollack/jodit@4.15.2/es2021/jodit.fat.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/jodit@4.15.1/es2021/jodit.fat.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vollack/jodit@4.15.2/es2021/jodit.fat.min.js"></script>
 ```
 
 ### unpkg
@@ -46,9 +51,9 @@ version tag instead for a stable build:
 ```html
 <link
 	rel="stylesheet"
-	href="https://unpkg.com/jodit@latest/es2021/jodit.min.css"
+	href="https://unpkg.com/@vollack/jodit@latest/es2021/jodit.min.css"
 />
-<script src="https://unpkg.com/jodit@latest/es2021/jodit.min.js"></script>
+<script src="https://unpkg.com/@vollack/jodit@latest/es2021/jodit.min.js"></script>
 ```
 
 Pin to a version tag for a stable build:
@@ -56,19 +61,9 @@ Pin to a version tag for a stable build:
 ```html
 <link
 	rel="stylesheet"
-	href="https://unpkg.com/jodit@4.15.1/es2021/jodit.min.css"
+	href="https://unpkg.com/@vollack/jodit@4.15.2/es2021/jodit.min.css"
 />
-<script src="https://unpkg.com/jodit@4.15.1/es2021/jodit.min.js"></script>
-```
-
-### cdnjs
-
-```html
-<link
-	rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/jodit/4.12.37/es2021/jodit.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jodit/4.12.37/es2021/jodit.min.js"></script>
+<script src="https://unpkg.com/@vollack/jodit@4.15.2/es2021/jodit.min.js"></script>
 ```
 
 ## Download archive
@@ -238,8 +233,8 @@ First, install Jodit via npm or yarn as shown above.
 
 ```jsx
 import React, { useRef, useEffect } from 'react';
-import Jodit from 'jodit';
-import 'jodit/es2021/jodit.min.css';
+import Jodit from '@vollack/jodit';
+import '@vollack/jodit/es2021/jodit.min.css';
 
 function JoditEditor({ value, onChange, config }) {
 	const editorRef = useRef(null);
@@ -329,7 +324,7 @@ You can use the following code to create a simple HTML page with Jodit Editor.
             maximum-scale=1.0"
 		/>
 		<link
-			href="https://cdn.jsdelivr.net/npm/jodit@latest/es2021/jodit.fat.min.css"
+			href="https://cdn.jsdelivr.net/npm/@vollack/jodit@latest/es2021/jodit.fat.min.css"
 			rel="stylesheet"
 			type="text/css"
 		/>
@@ -338,7 +333,7 @@ You can use the following code to create a simple HTML page with Jodit Editor.
 		<div id="jodit-editor"></div>
 		<script
 			type="text/javascript"
-			src="https://cdn.jsdelivr.net/npm/jodit@latest/es2021/jodit.fat.min.js"
+			src="https://cdn.jsdelivr.net/npm/@vollack/jodit@latest/es2021/jodit.fat.min.js"
 		></script>
 		<script>
 			Jodit.make('#jodit-editor');

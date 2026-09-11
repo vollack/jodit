@@ -24,7 +24,7 @@
 Download the latest [release](https://github.com/xdan/jodit/releases/latest) or via npm:
 
 ```sh
-npm install jodit
+npm install @vollack/jodit
 ```
 
 You will get the following files:
@@ -92,14 +92,14 @@ You can manually include additional plugins and languages as needed.
 
 ### Use a CDN
 
-#### cdnjs
+#### jsdelivr
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/jodit/4.13.9/es2021/jodit.min.css"
+  href="https://cdn.jsdelivr.net/npm/@vollack/jodit@4.15.2/es2021/jodit.fat.min.css"
 />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jodit/4.13.9/es2021/jodit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vollack/jodit@4.15.2/es2021/jodit.fat.min.js"></script>
 ```
 
 #### unpkg
@@ -107,9 +107,9 @@ You can manually include additional plugins and languages as needed.
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/jodit@4.13.9/es2021/jodit.min.css"
+  href="https://unpkg.com/@vollack/jodit@4.15.2/es2021/jodit.min.css"
 />
-<script src="https://unpkg.com/jodit@4.13.9/es2021/jodit.min.js"></script>
+<script src="https://unpkg.com/@vollack/jodit@4.15.2/es2021/jodit.min.js"></script>
 ```
 
 ### Usage

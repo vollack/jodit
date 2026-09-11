@@ -26,12 +26,7 @@ fs.writeFileSync(
 			types: 'types/index.d.ts',
 			scripts: {},
 			dependencies: {
-				...packageJson.dependencies,
-				...(packageJson.name !== 'jodit'
-					? {
-							jodit: '^4.0.1'
-						}
-					: {})
+				...packageJson.dependencies
 			},
 			devDependencies: {}
 		},
