@@ -4,11 +4,7 @@
  * Copyright (c) 2013-2026 Valerii Chupurnov. All rights reserved. https://xdsoft.net
  */
 
-import {
-	checkScreenshot,
-	makeCeptJodit,
-	mockRequest
-} from '../test/screenshots/mock.request';
+import { checkScreenshot, makeCeptJodit, mockRequest } from './mock.request';
 
 import { expect, test } from '@playwright/test';
 

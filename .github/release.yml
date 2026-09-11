@@ -1,6 +1,5 @@
 # Categorization for GitHub's auto-generated release notes / the "Generate
-# release notes" button. (The Publish workflow already fills release bodies from
-# CHANGELOG.md; this shapes the auto-generated fallback and the PR-based notes.)
+# release notes" button, used when drafting a GitHub Release from a tag.
 changelog:
   exclude:
     labels:

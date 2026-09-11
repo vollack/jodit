@@ -9,6 +9,13 @@
 > - :house: [Internal]
 > - :nail_care: [Polish]
 
+## 4.15.5
+
+#### :house: Internal
+
+- Removed five upstream-specific `.github` configs that don't apply to this fork: `docs.yml`, `manual.yml` and `xdsoft.yml` (each only curled a PAT-authenticated dispatch at an unrelated upstream repo — `xdan/jodit-autodoc`, `jodit/jodit-react`, `xdan/jodit-pro-home`), `greetings.yml` and `FUNDING.yml` (first-issue/first-PR messaging and a Sponsor button both promoting xdsoft's commercial PRO/OEM license).
+- Merged the top-level `tests/` folder (just `smoke.spec.ts`, a Playwright spec) into `test/screenshots/`, next to the helpers it already imports from. `test/` and `tests/` as two separate, similarly-named top-level folders was confusing; `test/tests/` (Karma acceptance tests) is unaffected.
+
 ## 4.15.4
 
 #### :boom: Breaking Change
