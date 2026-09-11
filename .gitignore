@@ -11,6 +11,14 @@ yarn-error.log
 .npmrc
 
 build/*
+# Tracked so jsDelivr's GitHub CDN mode (cdn.jsdelivr.net/gh/...) has a stable build to serve
+# at each release tag. See docs/getting-started.md#cdn.
+!build/es2021/
+build/es2021/*
+!build/es2021/jodit.fat.min.js
+!build/es2021/jodit.fat.min.css
+!build/es2021/jodit.min.js
+!build/es2021/jodit.min.css
 examples/build/
 .env
 /test-results/
