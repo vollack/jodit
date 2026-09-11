@@ -9,6 +9,16 @@
 > - :house: [Internal]
 > - :nail_care: [Polish]
 
+## 4.15.2
+
+#### :memo: Documentation
+
+- **Getting started / CDN**: added pinned-version examples for jsdelivr and unpkg in `docs/_includes/cdn.md` and `docs/getting-started.md`, next to the existing `@latest` snippets, so a build can be served from a stable, unchanging tag.
+
+#### :house: Internal
+
+- Removed the npm-publish release workflow (`release.yml`) and the Docker-based tooling: the contributor `docker/` environment and the Playwright screenshot-testing container (`test/screenshots/Dockerfile`, `playwright.yml`, and the related `make screenshots-*` targets). This fork no longer publishes to npm or runs screenshot tests through Docker.
+
 ## 4.15.1
 
 #### :bug: Bug Fix
