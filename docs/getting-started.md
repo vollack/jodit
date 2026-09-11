@@ -30,6 +30,17 @@
 <script src="https://cdn.jsdelivr.net/npm/jodit@latest/es2021/jodit.fat.min.js"></script>
 ```
 
+`@latest` always serves the newest release, which can change under you without warning. Pin to a
+version tag instead for a stable build:
+
+```html
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/jodit@4.15.1/es2021/jodit.fat.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/jodit@4.15.1/es2021/jodit.fat.min.js"></script>
+```
+
 ### unpkg
 
 ```html
@@ -38,6 +49,16 @@
 	href="https://unpkg.com/jodit@latest/es2021/jodit.min.css"
 />
 <script src="https://unpkg.com/jodit@latest/es2021/jodit.min.js"></script>
+```
+
+Pin to a version tag for a stable build:
+
+```html
+<link
+	rel="stylesheet"
+	href="https://unpkg.com/jodit@4.15.1/es2021/jodit.min.css"
+/>
+<script src="https://unpkg.com/jodit@4.15.1/es2021/jodit.min.js"></script>
 ```
 
 ### cdnjs
