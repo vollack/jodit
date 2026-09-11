@@ -21,95 +21,27 @@
 
 ## Get Started
 
-Download the latest [release](https://github.com/xdan/jodit/releases/latest) or via npm:
-
-```sh
-npm install @vollack/jodit
-```
-
-You will get the following files:
-
--   Inside `/esm`: ESM version of the editor (compatible with tools like webpack)
--   Inside `/es5`, `/es2015`, `/es2018`, `/es2021`: UMD bundled files (not minified)
--   Inside `/es5`, `/es2015`, `/es2018`, `/es2021` with `.min.js` extension: UMD bundled and minified files
--   `types/index.d.ts`: This file specifies the API of the editor. It is versioned, while everything else is considered private and may change with each release.
-
-### Include Jodit in Your Project
-
-Include the following two files:
-
-#### ES5 Version:
-
-```html
-<link type="text/css" rel="stylesheet" href="es2015/jodit.min.css" />
-<script type="text/javascript" src="es2015/jodit.min.js"></script>
-```
-
-ES2021 Version (for modern browsers only):
-
-```html
-<link type="text/css" rel="stylesheet" href="es2021/jodit.min.css" />
-<script type="text/javascript" src="es2021/jodit.min.js"></script>
-```
-
-#### ESM Modules:
-
-```html
-<link rel="stylesheet" href="./node_modules/jodit/es2021/jodit.min.css" />
-<script type="module">
-  import { Jodit } from './node_modules/jodit/esm/index.js';
-  Jodit.make('#editor', {
-    width: 600,
-    height: 400
-  });
-</script>
-```
-
-The ESM modules automatically include only the [basic set of plugins](https://github.com/xdan/jodit/blob/main/tools/utils/resolve-alias-imports.ts#L59) and the English language.
-You can manually include additional plugins and languages as needed.
-
-```html
-<link rel="stylesheet" href="./node_modules/jodit/es2021/jodit.min.css" />
-<script type="module">
-  import { Jodit } from './node_modules/jodit/esm/index.js';
-  import './node_modules/jodit/esm/plugins/add-new-line/add-new-line.js';
-  import './node_modules/jodit/esm/plugins/fullsize/fullsize.js';
-
-  // Or import all plugins
-  import './node_modules/jodit/esm/plugins/all.js';
-
-  import de from './node_modules/jodit/esm/langs/de.js';
-
-  Jodit.langs.de = de;
-
-  Jodit.make('#editor', {
-    width: 600,
-    height: 400,
-    language: 'de'
-  });
-</script>
-```
-
-### Use a CDN
-
-#### jsdelivr
+This fork isn't published to npm. Each release tag commits its `build/es2021/` output to the repo,
+and jsDelivr's GitHub CDN mode serves those files directly — no registry, no publish step, no
+token:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@vollack/jodit@4.15.2/es2021/jodit.fat.min.css"
+  href="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.fat.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/@vollack/jodit@4.15.2/es2021/jodit.fat.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.fat.min.js"></script>
 ```
 
-#### unpkg
+Pin the tag to whatever release you want to stay on. The non-fat build (fewer bundled plugins) is
+available the same way:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@vollack/jodit@4.15.2/es2021/jodit.min.css"
+  href="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.min.css"
 />
-<script src="https://unpkg.com/@vollack/jodit@4.15.2/es2021/jodit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.min.js"></script>
 ```
 
 ### Usage

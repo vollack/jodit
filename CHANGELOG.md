@@ -9,6 +9,17 @@
 > - :house: [Internal]
 > - :nail_care: [Polish]
 
+## 4.15.4
+
+#### :boom: Breaking Change
+
+- **CDN moved from npm to GitHub**: dropped the npm-publish workflow added in 4.15.3 (it needed an `NPM_TOKEN` secret nobody had configured). Instead, `build/es2021/jodit.fat.min.{js,css}` and `build/es2021/jodit.min.{js,css}` are now committed at each release tag, and served via jsDelivr's GitHub CDN mode (`cdn.jsdelivr.net/gh/vollack/jodit@<tag>/build/es2021/...`) — no registry, no publish step, no secret. This fork is no longer installable via `npm install`/`yarn add`; see the CDN section in `README.md` / `docs/getting-started.md`.
+
+#### :house: Internal
+
+- Removed `publish-package-to-npm.yml`.
+- `.gitignore`: carved `build/es2021/jodit.fat.min.{js,css}` and `build/es2021/jodit.min.{js,css}` out of the otherwise-ignored `build/` directory so release commits can track them.
+
 ## 4.15.3
 
 #### :boom: Breaking Change

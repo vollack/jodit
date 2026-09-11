@@ -1,69 +1,29 @@
 # Getting Started
 
-## Installation
-
-{% list tabs %}
-
-- npm
-
-  ```shell
-  npm install @vollack/jodit
-  ```
-
-- yarn
-
-  ```shell
-  yarn add @vollack/jodit
-  ```
-
-{% endlist %}
-
 ## CDN
 
-This fork publishes to npm as `@vollack/jodit` (not the upstream `jodit` package), so jsdelivr and
-unpkg — both of which mirror npm automatically — serve it under that scoped name. cdnjs is a
-separate, manually curated mirror of the upstream `jodit` package only, so it can't serve this
-fork's builds.
-
-### jsdelivr
+This fork isn't published to npm, so it's not installable via `npm install` / `yarn add`. Instead,
+each release tag commits its `build/es2021/` output, and jsDelivr's GitHub CDN mode
+(`cdn.jsdelivr.net/gh/...`) serves those files directly from the tagged repo — no registry, no
+publish step, no token.
 
 ```html
 <link
 	rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/@vollack/jodit@latest/es2021/jodit.fat.min.css"
+	href="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.fat.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/@vollack/jodit@latest/es2021/jodit.fat.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.fat.min.js"></script>
 ```
 
-`@latest` always serves the newest release, which can change under you without warning. Pin to a
-version tag instead for a stable build:
+Pin the tag to whatever release you want to stay on; it will not change under you. The non-fat
+build (fewer bundled plugins) is available the same way:
 
 ```html
 <link
 	rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/@vollack/jodit@4.15.2/es2021/jodit.fat.min.css"
+	href="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/@vollack/jodit@4.15.2/es2021/jodit.fat.min.js"></script>
-```
-
-### unpkg
-
-```html
-<link
-	rel="stylesheet"
-	href="https://unpkg.com/@vollack/jodit@latest/es2021/jodit.min.css"
-/>
-<script src="https://unpkg.com/@vollack/jodit@latest/es2021/jodit.min.js"></script>
-```
-
-Pin to a version tag for a stable build:
-
-```html
-<link
-	rel="stylesheet"
-	href="https://unpkg.com/@vollack/jodit@4.15.2/es2021/jodit.min.css"
-/>
-<script src="https://unpkg.com/@vollack/jodit@4.15.2/es2021/jodit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.min.js"></script>
 ```
 
 ## Download archive
@@ -227,7 +187,8 @@ If you prefer to create your own React wrapper without using `jodit-react`, you 
 
 ### Installation
 
-First, install Jodit via npm or yarn as shown above.
+This fork isn't published to npm (see [CDN](#cdn) above), so a bundler import like the one below
+needs a local build of this repo rather than an installable package.
 
 ### Basic React Component
 
@@ -324,7 +285,7 @@ You can use the following code to create a simple HTML page with Jodit Editor.
             maximum-scale=1.0"
 		/>
 		<link
-			href="https://cdn.jsdelivr.net/npm/@vollack/jodit@latest/es2021/jodit.fat.min.css"
+			href="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.fat.min.css"
 			rel="stylesheet"
 			type="text/css"
 		/>
@@ -333,7 +294,7 @@ You can use the following code to create a simple HTML page with Jodit Editor.
 		<div id="jodit-editor"></div>
 		<script
 			type="text/javascript"
-			src="https://cdn.jsdelivr.net/npm/@vollack/jodit@latest/es2021/jodit.fat.min.js"
+			src="https://cdn.jsdelivr.net/gh/vollack/jodit@4.15.4/build/es2021/jodit.fat.min.js"
 		></script>
 		<script>
 			Jodit.make('#jodit-editor');
