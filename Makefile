@@ -264,63 +264,6 @@ test-watch:
 coverage:
 	npx --yes type-coverage ./src --detail --ignore-files 'build/**' --ignore-files 'test/**' --ignore-files 'examples/**'
 
-# Screenshot (Playwright) tests run inside a docker image so that the
-# snapshots are rendered with the same fonts/browsers everywhere.
-# Targets below work both for Jodit itself and for projects which include this
-# Makefile through `jodit-env` (e.g. Jodit PRO): the project under test is
-# mounted to /app, and when the Makefile lives in node_modules/jodit-env that
-# folder is mounted to /app/jodit-env too (Playwright does not transpile
-# TypeScript under node_modules), and a `jodit-env` symlink is created in the
-# project root so the shared helpers (`./jodit-env/test/screenshots/*`) are
-# importable from the specs by the same relative path locally and in docker.
-SCREENSHOTS_IMAGE := jodit-screenshots
-SCREENSHOTS_DIR := $(cwd)test/screenshots
-PLAYWRIGHT_CONFIG := $(if $(wildcard $(pwd)/playwright.config.ts),$(pwd)/playwright.config.ts,$(cwd)playwright.config.ts)
-IS_JODIT_ENV := $(if $(filter $(cwd),$(pwd)/),,true)
-
-.PHONY: screenshots-update
-screenshots-update:
-	make build es=es2021 fat=true uglify=true
-	make screenshots-build-image
-	make screenshots-test es=es2021 fat=true uglify=true updateTests=true
-
-
-.PHONY: screenshots-all
-screenshots-all:
-	make screenshots-build-image
-	make screenshots-test es=es5 fat=true uglify=true
-	make screenshots-test es=es2015 fat=true uglify=true
-	make screenshots-test es=es2018 fat=true uglify=true
-	make screenshots-test es=es2021 fat=true uglify=true
-
-
-.PHONY: screenshots-test
-screenshots-test:
-	@mkdir -p $(pwd)/playwright-report
-	$(if $(IS_JODIT_ENV),@ln -sfn node_modules/jodit-env $(pwd)/jodit-env,)
-	docker run \
-		--rm \
-		--ipc=host \
-		-p 9323:9323 \
-		-v $(pwd)/build:/app/build/ \
-		-v $(pwd)/test:/app/test/ \
-		-v $(pwd)/src:/app/src/ \
-		$(if $(wildcard $(pwd)/tools),-v $(pwd)/tools:/app/tools/,) \
-		-v $(pwd)/playwright-report:/app/playwright-report/ \
-		-v $(PLAYWRIGHT_CONFIG):/app/playwright.config.ts \
-		$(if $(IS_JODIT_ENV),-v $(cwd):/app/jodit-env/,) \
-		-e BUILD=$(es) \
-		-e MIN=$(uglify) \
-		-e FAT=$(fat) \
-		-e CI=$(CI) \
-		$(SCREENSHOTS_IMAGE) \
-		npx playwright test $(screenshotsArgs) $(if $(filter true,$(updateTests)),--update-snapshots,)
-
-.PHONY: screenshots-build-image
-screenshots-build-image:
-	docker build -t $(SCREENSHOTS_IMAGE) -f $(SCREENSHOTS_DIR)/Dockerfile $(SCREENSHOTS_DIR)
-
-
 .PHONY: newversion
 newversion:
 	npm version $(or $(releaseVersion),patch) --no-git-tag-version $(if $(releaseVersion),--allow-same-version,)
